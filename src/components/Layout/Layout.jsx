@@ -7,7 +7,7 @@ function Layout({children}) {
   const [open, setOpen] = useState(false)
 
   return (
-    <Box sx={{width: "100%", pl: 1, pr: 1}}>
+    <Box sx={{width: "100%"}}>
       {open ? <Sidebar open={open} handleClick={() => setOpen(false)}></Sidebar> : null}
       <Header handleClick={() => setOpen(true)}></Header>
       {children}

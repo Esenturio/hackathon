@@ -1,4 +1,4 @@
-import Home from './components/Forum/Home';
+import Forum from './components/Forum/Forum';
 import Login from './components/Login/Login';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
@@ -8,7 +8,7 @@ function App() {
     <>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/forum" element={<Forum/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
       </Layout>

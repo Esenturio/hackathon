@@ -27,7 +27,7 @@ function Home() {
           })}
         </Box>
         <Box sx={{display: 'flex'}}>
-          <TextField label="Выберите категорию"></TextField>
+          <Search label="Выберите категорию"></Search>
         </Box>
       </Box>
     </Box>

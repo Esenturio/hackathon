@@ -6,10 +6,12 @@ const theme = createTheme({
       main: '#0066FF',
       text: "#252525",
       dark: '#59585B',
-      light: '#ffffff',
+      light: '#EFF5FF',
+      
     },
     white: {
-      main: '#FFFFFF'
+      main: '#FFFFFF',
+      back: '#EFF5FF'
     }
   },
   breakpoints: {
@@ -23,6 +25,12 @@ const theme = createTheme({
       xl: 1536,
     },
   },
+  typography: {
+    fontFamily: `"Ubuntu", "sans-serif", "Arial"`,
+    fontWeightRegular: 400,
+    fontWeightBold: 500,
+    fontWeightLight: 600,
+  }
 });
 
 export default theme

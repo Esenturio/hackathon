@@ -1,0 +1,58 @@
+  
+.News{
+  width: 360px;
+  padding: 0 20px;
+}
+
+.news-1{
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 21px;
+  color: #252525;
+}
+
+.card{
+  display: flex;
+  width: 328px;
+  height: 134px;
+  left: 16px;
+  top: 157px;
+
+  background: #EFF5FF;
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+  /* justify-content: center; */
+}
+
+.card-img{
+  display: flex;
+  margin-right: 20px;
+
+}
+
+.card-text{
+  display: block;
+}
+
+.text-p4{
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #252525;
+}
+
+.text-p3{
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #252525;
+
+  opacity: 0.5;
+}

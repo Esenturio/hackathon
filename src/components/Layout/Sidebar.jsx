@@ -29,13 +29,13 @@ function Sidebar({open, handleClick}) {
       </Box>
       
       <List>
-      {navbar.map((item, index) => {
-          return <ListItem disablePadding key={index} onClick={() => navigate(item.pathname)}>
-                  <ListItemButton>
-                    <Typography sx={{fontWeight: '500', fontSize: '20px', color: pathname === item.pathname ? theme.palette.primary.main : theme.palette.primary.text}}>{item.name}</Typography>
-                  </ListItemButton>
-                </ListItem>
-      })}
+        {navbar.map((item, index) => {
+            return <ListItem disablePadding key={index} onClick={() => navigate(item.pathname)}>
+                    <ListItemButton onClick={handleClick}>
+                      <Typography sx={{fontWeight: '500', fontSize: '20px', color: pathname === item.pathname ? theme.palette.primary.main : theme.palette.primary.text}}>{item.name}</Typography>
+                    </ListItemButton>
+                  </ListItem>
+        })}
       </List>
     </Box>
   )

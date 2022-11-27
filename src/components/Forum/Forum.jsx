@@ -15,7 +15,7 @@ const cats = [
   {id: 3, text: 'ЖКХ'},
 ];
 
-function Home() {
+function Forum() {
   const [chosen, setChosen] = useState(0)
 
   return (
@@ -34,4 +34,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Forum;

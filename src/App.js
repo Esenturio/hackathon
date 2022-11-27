@@ -1,14 +1,16 @@
-import Home from './components/Forum/Home';
 import Login from './components/Login/Login';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
+import Forum from './components/Forum/Forum';
+import Main from './components/Main/Main';
 
 function App() {
   return (
     <>
       <Layout>
+        <Main/>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Forum/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
       </Layout>

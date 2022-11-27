@@ -18,7 +18,7 @@ function Sidebar({open, handleClick}) {
   const navigate = useNavigate()
 
   return (
-    <Box sx={{transition: '.3s',width: '88%', height: '100%', background: theme.palette.white.main, position: 'fixed', zIndex: 2, left: open ? '0%' : '-100%', p: '14px', mb: '32px'}}>
+    <Box sx={{transition: '.3s',width: '340px', height: '100%', background: theme.palette.white.main, position: 'fixed', zIndex: 2, left: open ? '0%' : '-100%', p: '14px', mb: '32px'}}>
       <Box sx={{display: 'flex', alignItems: 'center'}}>
         <IconButton sx={{mr: '10px'}} onClick={handleClick}>
           <CloseIcon/>

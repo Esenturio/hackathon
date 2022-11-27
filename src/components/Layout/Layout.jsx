@@ -12,7 +12,7 @@ function Layout({children}) {
     <Box sx={{width: "100%", maxWidth: '360px'}}>
       {pathname === '/login' || pathname === '/sign-up' ? null : 
         <>
-          {open ? <Sidebar open={open} handleClick={() => setOpen(false)}></Sidebar> : null}
+          <Sidebar open={open} handleClick={() => setOpen(false)}></Sidebar>
           <Header handleClick={() => setOpen(true)}></Header>
         </>
       }

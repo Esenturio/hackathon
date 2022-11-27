@@ -9,7 +9,7 @@ function Layout({children}) {
   const {pathname} = useLocation()
 
   return (
-    <Box sx={{width: "100%"}}>
+    <Box sx={{width: "100%", maxWidth: '360px'}}>
       {pathname === '/login' || pathname === '/sign-up' ? null : 
         <>
           {open ? <Sidebar open={open} handleClick={() => setOpen(false)}></Sidebar> : null}

@@ -76,8 +76,8 @@ function Home() {
             onSwiper={(swiper) => console.log(swiper)}
           >
             {posts.map((item, index) => {
-              return <SwiperSlide>
-                        <ForumCard img={item.img} name={item.name} location={item.location} date={item.date} key={index}></ForumCard>
+              return <SwiperSlide key={index}>
+                        <ForumCard img={item.img} name={item.name} location={item.location} date={item.date}></ForumCard>
                       </SwiperSlide>
             })}
           </Swiper>

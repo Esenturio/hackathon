@@ -6,30 +6,29 @@ import bigLogo from '../../assets/img/logo-big.png'
 import TextField from './../UI/TextField';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
-let startData = {
-  email: '',
-  password: ''
+let startFields = {
+  name: "",
+  surname: "",
+  inn: "",
+  email: "",
+  password: "",
+  repassword: "",
 }
 
-function Login() {
+function SignUp() {
   const navigate = useNavigate()
-  const [fields, setFields] = useState(startData)
-
-  const submitData = (() => {
-    document.cookie = 'user=jwtToken'
-    setTimeout(() => {
-      navigate('/')
-    }, 300);
-  })
+  const [fields, setFields] = useState(startFields)
 
   const changeHandler = (event => {
     setFields((prev) => {
       return {
-        ...prev,
+        ...prev, 
         [event.target.name]: event.target.value
       }
     })
   })
+
+  
 
   return (
     <Box sx={{display: "flex", height: "100vh", backgroundColor: theme.palette.primary.light, flexDirection: 'column', position: 'relative'}}>
@@ -42,25 +41,39 @@ function Login() {
             <img src={bigLogo} alt="logo" />
           </Box>
           <Typography variant='h4' sx={{mb: '24px', textAlign: 'center', fontSize: '24px', fontWeight: '500'}}>
-            Войти
+            Регистрация
           </Typography>
+          <Box sx={{mb: '20px'}}>
+            <TextField text={'Имя'} name='name' onChange={(event) => changeHandler(event)}></TextField>
+          </Box>
+          <Box sx={{mb: '20px'}}>
+            <TextField text={'Фамилия'} name='surname' onChange={(event) => changeHandler(event)}></TextField>
+          </Box>
+          <Box sx={{mb: '20px'}}>
+            <TextField text={'ИНН'} name='inn' onChange={(event) => changeHandler(event)}></TextField>
+          </Box>
           <Box sx={{mb: '20px'}}>
             <TextField text={'Email'} name='email' onChange={(event) => changeHandler(event)}></TextField>
           </Box>
-          <Box sx={{mb: '8px'}}>
+          <Box sx={{mb: '20px'}}>
             <TextField text={'Пароль'} type='password' name='password' onChange={(event) => changeHandler(event)}></TextField>
           </Box>
-          <Typography sx={{fontSize: '12px', textAlign: 'right', color: theme.palette.primary.main, mb: '32px'}}>Забыли пароль?</Typography>
-          <Box>
-            <Button variant="contained" onClick={() => submitData('/')} sx={{textTransform: 'initial', width: '100%', fontWeight: '400', p: '12px 0', borderRadius: '12px'}}>Войти</Button> 
+          <Box sx={{mb: '32px'}}>
+            <TextField text={'Повторите пароль'} type='password' name='repassword' onChange={(event) => changeHandler(event)}></TextField>
           </Box>
+          <Box sx={{mb: '32px'}}>
+            <Button variant="contained" onClick={() => navigate('/')} sx={{textTransform: 'initial', width: '100%', fontWeight: '400', p: '12px 0', borderRadius: '12px'}}>Зарегистрироваться</Button> 
+          </Box>
+          <Typography sx={{fontSize: '12px', textAlign: 'center'}}>
+            Нажимая «Зарегистрироваться» вы соглашаетесь с <Typography component='span' sx={{color: theme.palette.primary.main, fontSize: '12px'}}>Условиями использования</Typography> и <Typography component='span' sx={{color: theme.palette.primary.main, fontSize: '12px'}}>Политикой конфиденциальности</Typography>
+          </Typography>
         </Box>
       </Box>
       <Typography sx={{fontSize: '12px', textAlign: 'center', position: 'absolute', bottom: '30px', width: '100%'}}>
-        У вас нет аккаунта? <Typography sx={{color: theme.palette.primary.main, fontSize: '12px'}} component='span' onClick={() => navigate('/sign-up')}>Зарегистрируйтесь</Typography>
+        Уже зарегистрировались? <Typography sx={{color: theme.palette.primary.main, fontSize: '12px'}} component='span' onClick={() => navigate('/login')}>Войти</Typography>
       </Typography>
     </Box>
   )
 }
 
-export default Login
+export default SignUp

@@ -3,7 +3,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import React from 'react'
 import theme from './../../theme';
 import logo from '../../assets/img/logo.png'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { NavigateBefore } from '@mui/icons-material';
 
 const navbar = [
   {pathname: '/', name: 'Главная'},
@@ -14,27 +15,28 @@ const navbar = [
 
 function Sidebar({open, handleClick}) {
   const {pathname} = useLocation()
+  const navigate = useNavigate()
 
   return (
-    <Box sx={{transition: '.3s',width: '88%', height: '100%', background: theme.palette.white.main, position: 'fixed', zIndex: 2, left: open ? '0' : '-100%', p: '14px', mb: '32px'}}>
+    <Box sx={{transition: '.3s',width: '88%', height: '100%', background: theme.palette.white.main, position: 'fixed', zIndex: 2, left: open ? '0%' : '-100%', p: '14px', mb: '32px'}}>
       <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <IconButton sx={{mr: '10px'}}>
-          <CloseIcon onClick={handleClick}/>
+        <IconButton sx={{mr: '10px'}} onClick={handleClick}>
+          <CloseIcon/>
         </IconButton>
         <Box>
           <img src={logo} alt="logo" style={{height: '100%', marginTop: '4px'}} />
         </Box>
       </Box>
-
+      
+      <List>
       {navbar.map((item, index) => {
-        return <List key={index}>
-                <ListItem disablePadding>
+          return <ListItem disablePadding key={index} onClick={() => navigate(item.pathname)}>
                   <ListItemButton>
                     <Typography sx={{fontWeight: '500', fontSize: '20px', color: pathname === item.pathname ? theme.palette.primary.main : theme.palette.primary.text}}>{item.name}</Typography>
                   </ListItemButton>
                 </ListItem>
-              </List>
       })}
+      </List>
     </Box>
   )
 }

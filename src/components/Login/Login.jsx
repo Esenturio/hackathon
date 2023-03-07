@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import bigLogo from '../../assets/img/logo-big.png'
 import TextField from './../UI/TextField';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import axios from 'axios'
 
 let startData = {
   email: '',
@@ -15,8 +16,8 @@ function Login() {
   const navigate = useNavigate()
   const [fields, setFields] = useState(startData)
 
-  const submitData = (() => {
-    document.cookie = 'user=jwtToken'
+  const submitData = (async () => {
+    await axios.post('https://jalob-net.herokuapp.com/auth/login/', {fields})
     setTimeout(() => {
       navigate('/')
     }, 300);

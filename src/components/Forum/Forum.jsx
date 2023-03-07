@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { Typography, Box, Menu, MenuItem, TextField, InputBase, IconButton, SvgIcon } from '@mui/material'
-import {useState} from 'react'
-import theme from '../../theme';
+import {useEffect, useState} from 'react'
 import CatTab from '../CatTab/CatTab';
 import postImg from '../../assets/img/post.png'
 import post2Img from '../../assets/img/postRoll.png'
 import ForumCard from '../ForumCardPopular/ForumCardPopular';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ForumCardItem from '../ForumCardItem/ForumCardItem';
+import axios from 'axios'
 
 const Search = styled("div")(({theme}) => ({
   padding: '0px 12px',
@@ -27,9 +27,6 @@ const cats = [
 
 const posts = [
   {img: postImg, name: 'Отсуствует лампочки фонаря', location: 'Ленинский район', date: '2 часа назад'},
-  {img: postImg, name: 'Отсуствует лампочки фонаря', location: 'Ленинский район', date: '2 часа назад'},
-  {img: postImg, name: 'Отсуствует лампочки фонаря', location: 'Ленинский район', date: '2 часа назад'},
-  {img: postImg, name: 'Отсуствует лампочки фонаря', location: 'Ленинский район', date: '2 часа назад'}
 ]
 
 const posts2 = [
@@ -40,6 +37,19 @@ const posts2 = [
 
 function Home() {
   const [chosen, setChosen] = useState(0)
+  const [popular, setPopular] = useState(posts)
+  const [news, setNews] = useState(posts2)
+
+  useEffect(async() => {
+    try {
+      let data = await axios.get('https://jalob-net.herokuapp.com/news/')
+      console.log(data);
+      setPopular(data.data)
+      setNews(data.data)
+    } catch (e) {
+      console.log(e.message)
+    }
+  }, [])
 
   return (
     <Box>
@@ -75,7 +85,7 @@ function Home() {
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            {posts.map((item, index) => {
+            {popular.map((item, index) => {
               return <SwiperSlide key={index}>
                         <ForumCard img={item.img} name={item.name} location={item.location} date={item.date}></ForumCard>
                       </SwiperSlide>
@@ -85,7 +95,7 @@ function Home() {
       </Box>
 
       <Box sx={{p: '0 16px'}}>
-        {posts2.map((item, index) => {
+        {news.map((item, index) => {
           return <ForumCardItem name={item.name} key={index} img={item.img} location={item.location} date={item.date}></ForumCardItem>
         })}
       </Box>
